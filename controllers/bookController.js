@@ -48,7 +48,7 @@ const modifierBook = async (req, res, next) => {
     });
 
     if (!existBook) {
-      return res.status(404).json({ Erreur: "Book not found !" });
+      return res.status(404).json({ Erreur: "Book to update not found !" });
     }
 
     const book = await prisma.book.update({
@@ -78,7 +78,7 @@ const supprimerBook = async (req, res, next) => {
     });
 
     if (!existBook) {
-      return res.status(404).json({ Erreur: "Book not found !" });
+      return res.status(404).json({ Erreur: "Book to delete not found !" });
     }
 
     const book = await prisma.book.delete({

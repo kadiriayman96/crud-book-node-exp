@@ -11,11 +11,9 @@ import {
 const app = express();
 
 app.use(express.json());
-
 app.route("/books").get(afficherBooks).post(ajouterBook);
 app.route("/books/:id").put(modifierBook).delete(supprimerBook);
 
-// middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.json({
