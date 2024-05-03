@@ -1,13 +1,19 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 import express, { json } from "express";
-import { afficherBooks, ajouterBook } from "./controllers/bookController.js";
+import {
+  afficherBooks,
+  ajouterBook,
+  modifierBook,
+  supprimerBook,
+} from "./controllers/bookController.js";
 
 const app = express();
 
 app.use(express.json());
 
 app.route("/books").get(afficherBooks).post(ajouterBook);
+app.route("/books/:id").put(modifierBook).delete(supprimerBook);
 
 // middleware
 app.use((err, req, res, next) => {
